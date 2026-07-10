@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 7% 7%;
+    --card: 220 7% 7%;
+    --card-foreground: 220 3% 93%;
+    --popover: 220 7% 7%;
+    --popover-foreground: 220 3% 93%;
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 5% 17%;
+    --secondary-foreground: 220 3% 93%;
+    --muted: 220 5% 17%;
+    --muted-foreground: 220 3% 60%;
+    --accent: 220 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 5% 20%;
+    --input: 220 5% 20%;
+    --ring: 220 100% 50%;
+    --chart-1: 220 100% 50%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0rem;
+    --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 220 7% 7%;
+    --sidebar-foreground: 220 3% 93%;
+    --sidebar-primary: 220 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 5% 17%;
+    --sidebar-accent-foreground: 220 3% 93%;
+    --sidebar-border: 220 5% 20%;
+    --sidebar-ring: 220 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-[#0D0E10] text-[#E8E9EB] font-body;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  ::selection {
+    background: #0055FF;
+    color: #FFFFFF;
+  }
+}
+
+/* Datum Line */
+@keyframes datumPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.4; }
+}
+
+.datum-line {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 0.5px;
+  background: linear-gradient(to bottom, transparent, #0055FF 20%, #0055FF 80%, transparent);
+  z-index: 1;
+  pointer-events: none;
+  animation: datumPulse 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0E10;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2C30;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0055FF;
+}
+
+/* Horizontal scroll section */
+.snap-scroll-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-scroll-x > * {
+  scroll-snap-align: start;
+}
+
+/* Counter animation */
+@keyframes countVibrate {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-1px); }
+  75% { transform: translateX(1px); }
+}
+
+.count-vibrate {
+  animation: countVibrate 0.05s ease-in-out 3;
+}
+
+/* Menu overlay */
+.menu-backdrop {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
